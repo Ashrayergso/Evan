@@ -1,0 +1,30 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div id="product-catalog">
+        {#each products as product}
+        <div class="product-card">
+            <img src="/static/img/product_images/{product.image}" alt="{product.name}">
+            <h2>{product.name}</h2>
+            <p>Product Number: {product.number}</p>
+            <p>Cost: {product.cost}</p>
+            <a href="{product.link}">Product Link</a>
+            <button id="search-button" on:click={searchProduct(product.number)}>Search</button>
+            <button id="alternative-search-button" on:click={searchAlternative(product.number)}>Alternative Search</button>
+            <input type="checkbox" id="product-checkbox" bind:checked={product.selected}>
+            <input type="number" id="quantity-field" min="1" bind:value={product.quantity}>
+        </div>
+        {/each}
+        <button id="export-button" on:click={exportList}>Export</button>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
+```
